@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="container mt-5 p-4">
+	{% if not file_uploaded %}
+	<!--Upload Section-->
+	<h2 class="text-center mb-4">Upload Dataset for Loan Eligibility Detection</h2>
+	<form method="POST" action="/upload" enctype="multipart/form-data" class="text-center">
+		<div class="form-group mb-3">
+			<label for="file" class="fw-bold">Choose CSV File</label><br>
+			<input name="file" type="file" id="file" class="form-control w-50 mx-auto">
+		</div>
+		<button type="Submit" class="btn btn-primary px-4">Upload</button>
+	</form>
+	{% endif %}
+	{% if file_uploaded %}
+	<!--Dataset Preview-->
+	<h2 class="text-center mt-5 mb-3">Dataset Preview</h2>
+	<div class="table-responsive shadow rounded">
+		<table class="table table-bordered table-hover table-light text-center align-middle">
+			<thead class="table-primary">
+				<tr>
+					{%for col in columns%}
+					<th>{{ col }}</th>
+					{% endfor %}
+				</tr>
+			</thead>
+			<tbody>
+				{% for row in data %}
+				     <tr>
+				     	{% for cell in row %}
+				     	<td>{{ cell }}</td>
+				     	{% endfor %}
+				     </tr>
+				     {% endfor %}
+				 </tbody>
+				</table>
+			</div>
+			<div class="text-center mt-4">
+				<form action="{{url_for('train')}}">
+					<button type="submit" class="btn btn-success px-5">Train Model</button>
+				</form>
+			</div>
+			{% endif %}
+		</section>
+		{% endblock %}

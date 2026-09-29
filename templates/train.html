@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5 mb-5 text-center">
+<h2 class="text-sucess">Training Sucessfull</h2>
+{% if accuracy %}
+<p><strong>Model Accuracy:</strong>{{ accuracy }}%</p>
+<div class="my-4">
+	<img src="{{ url_for('static', filename='images/confusion_matrix.png') }}"
+	alt="Confusion Matrix"
+	class="img-fluid"
+	style="max-width: 100%; height: auto;">
+</div>
+{% endif %}
+<p class="mt-3">Your model is now ready for detection </p>
+<form action="{{url_for('detect')}}">
+	<button type="submit" class="btn btn-success px-5">Detect</button>
+</form>
+</div> 
+{% endblock %}
+ 

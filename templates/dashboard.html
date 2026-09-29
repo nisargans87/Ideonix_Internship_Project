@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class ="container mt-5 text-center">
+	<h2>Welcome, {{name}}</h2>
+	<p>Explore the features of the Loan Eligibility Application!</p>
+	<div class="mt-4">
+		<!-- Logout button-->
+		<form action="/logout" method="post" style="display: inline;">
+			<button type="submit">Logout</button>
+		</form>
+		<!-- start Detection button-->
+		<form action="/upload" method="get" style="display: inline;">
+			<button type="Submit">Start loan Eligibility Detection!</button>
+		</form>
+	</div>
+</div>
+{% endblock %}
+

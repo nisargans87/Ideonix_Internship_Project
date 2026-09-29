@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-3">
+  <h2 class="text-center mb-4">Loan Eligibility Detection</h2>
+
+  <form method="POST" action="{{ url_for('detect') }}">
+    <div class="row">
+
+      <!-- LEFT COLUMN -->
+      <div class="col-md-6">
+
+        <div class="form-group mb-3">
+          <label>Applicant Income (₹):</label>
+          <input type="number" name="ApplicantIncome" class="form-control"
+                 min="1000" max="200000" required>
+        </div>
+
+        <div class="form-group mb-3">
+          <label>Co-applicant Income (₹):</label>
+          <input type="number" name="CoapplicantIncome" class="form-control"
+                 min="0" max="100000" required>
+        </div>
+
+        <div class="form-group mb-3">
+          <label>Loan Amount (₹):</label>
+          <input type="number" name="LoanAmount" class="form-control"
+                 min="10000" max="2500000" required>
+        </div>
+
+        <div class="form-group mb-3">
+          <label>Loan Term (Months):</label>
+          <input type="number" name="Loan_Term_Months" class="form-control"
+                 min="60" max="480" required>
+        </div>
+
+      </div>
+
+      <!-- RIGHT COLUMN -->
+      <div class="col-md-6">
+
+        <div class="form-group mb-3">
+          <label>Credit History:</label>
+          <select name="Credit_History" class="form-control" required>
+            <option value="" disabled selected>Select</option>
+            <option value="1">Good</option>
+            <option value="0">Poor</option>
+          </select>
+        </div>
+
+        <div class="form-group mb-3">
+          <label>Employment Type:</label>
+          <select name="Employment_Type" class="form-control" required>
+            <option value="" disabled selected>Select</option>
+            <option value="0">Salaried</option>
+            <option value="1">Self Employed</option>
+            <option value="2">Government</option>
+            <option value="3">Private</option>
+          </select>
+        </div>
+
+        <div class="form-group mb-3">
+          <label>Dependents:</label>
+          <select name="Dependents" class="form-control" required>
+            <option value="" disabled selected>Select</option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3+</option>
+          </select>
+        </div>
+
+        <div class="form-group mb-3">
+          <label>Property Area:</label>
+          <select name="Property_Area" class="form-control" required>
+            <option value="" disabled selected>Select</option>
+            <option value="0">Rural</option>
+            <option value="1">Semiurban</option>
+            <option value="2">Urban</option>
+          </select>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="text-center mt-4">
+      <button type="submit" class="btn btn-primary px-5">
+        Check Eligibility
+      </button>
+    </div>
+
+  </form>
+</div>
+{% endblock %}

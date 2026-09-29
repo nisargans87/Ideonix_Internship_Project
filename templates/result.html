@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5">
+	<h2>Detection Results</h2>
+	<h4 class="mt-4">User Inputs:</h4>
+	<table class="table table-bordered mt-3 text-dark table-light">
+		<thead>
+			<tr>
+				<th>Feature</th>
+				<th>Value</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for key,value in inputs.items() %}
+			<tr>
+				<td>{{ key }}</td>
+				<td>{{ value }}</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	<h4 class="mt-4" style="color: #fff; background-color:{% if result == 'Eligible for Loan' %}
+	#28a745{% else %}#dc3545{% endif %};padding:10px;text-align:center;border-radius:5px;">{{result}}</h4>
+	<form action="/detect" style="display:inline;"><h4>
+		<button type="submit">Make Another Detection</button>
+		</form>
+		</div>
+		{% endblock %} 
+
